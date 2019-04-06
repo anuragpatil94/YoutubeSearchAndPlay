@@ -1,3 +1,13 @@
+# YoutubeSearchAndPlay
+
+A app with a search functionality to the Youtube API, which will show a list of videos and also play a video, from the list.
+
+This app is for learning purpose from a Udemy Course, and my ***honest attempt*** to complete the app before watching the Course Section.
+
+---
+## How to run the App
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
