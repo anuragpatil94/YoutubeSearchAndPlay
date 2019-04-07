@@ -7,15 +7,20 @@ import youtube from "../api/youtube";
 class App extends React.Component {
   state = { videoList: [], currentVideo: null };
 
+  componentDidMount() {
+    this.onSearchSubmit("Anime");
+  }
+
   onSearchSubmit = async term => {
     const response = await youtube.get("/search", {
       params: {
         q: term
       }
     });
-    this.setState({
-      videoList: response.data.items
-    });
+    this.setState({ videoList: response.data.items });
+    if (response.data.items.length > 0) {
+      this.setState({ currentVideo: response.data.items[0] });
+    }
   };
 
   onVideoSelect = video => {
@@ -26,11 +31,19 @@ class App extends React.Component {
     return (
       <div className="ui container" style={{ marginTop: "10px" }}>
         <SearchBar onSubmit={this.onSearchSubmit} />
-        <VideoDetail video={this.state.currentVideo} />
-        <VideoList
-          videos={this.state.videoList}
-          onVideoSelect={this.onVideoSelect}
-        />
+        <div className="ui grid">
+          <div className="ui row">
+            <div className="eleven wide column">
+              <VideoDetail video={this.state.currentVideo} />
+            </div>
+            <div className="five wide column">
+              <VideoList
+                videos={this.state.videoList}
+                onVideoSelect={this.onVideoSelect}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

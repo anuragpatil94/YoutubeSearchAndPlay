@@ -16,7 +16,6 @@ class VideoDetail extends React.Component {
           <h4 className="ui header">{video.snippet.title}</h4>
           <p>{video.snippet.description}</p>
         </div>
-        ;
       </div>
     );
   }
