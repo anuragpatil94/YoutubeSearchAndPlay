@@ -4,12 +4,14 @@ import React from "react";
 
 class VideoItem extends React.Component {
   render() {
-    console.log(this.props.video);
-
-    const title = this.props.video.snippet.title;
-    const thumbnail = this.props.video.snippet.thumbnails.medium.url;
+    const video = this.props.video;
+    const title = video.snippet.title;
+    const thumbnail = video.snippet.thumbnails.medium.url;
     return (
-      <div className="video-item item">
+      <div
+        className="video-item item"
+        onClick={() => this.props.onVideoSelect(video)}
+      >
         <img className="ui image" src={thumbnail} alt="abc" />
         <div className="content">
           <div className="header">{title}</div>
