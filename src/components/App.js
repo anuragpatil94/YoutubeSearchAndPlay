@@ -13,11 +13,12 @@ class App extends React.Component {
         q: term
       }
     });
-    this.setState({ videoList: response.data.items });
+    this.setState({
+      videoList: response.data.items
+    });
   };
 
   onVideoSelect = video => {
-    console.log(video);
     this.setState({ currentVideo: video });
   };
 
@@ -25,7 +26,7 @@ class App extends React.Component {
     return (
       <div className="ui container" style={{ marginTop: "10px" }}>
         <SearchBar onSubmit={this.onSearchSubmit} />
-        <VideoDetail currentVideo={this.state.currentVideo} />
+        <VideoDetail video={this.state.currentVideo} />
         <VideoList
           videos={this.state.videoList}
           onVideoSelect={this.onVideoSelect}
